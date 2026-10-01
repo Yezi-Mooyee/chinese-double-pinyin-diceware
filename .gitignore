@@ -10,3 +10,6 @@ tools/phrase-*.txt
 tools/eff_*.txt
 tools/cedict.txt.gz
 raw-cfbao-*.wordlist
+
+# 构建产物
+*.exe

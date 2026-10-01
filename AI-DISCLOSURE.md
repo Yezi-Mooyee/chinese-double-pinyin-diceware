@@ -6,7 +6,7 @@ reviewed by a person.
 Framework: DeepSeek Harness (Web)
 Model: DeepSeek V4.1 Flash
 
-This covers the wordlists, the scripts and the documentation.
+This covers the wordlists, the scripts, the C generator and the documentation.
 
 The wordlist is derived by a script from an MIT-licensed upstream list, so the
 raw material is sound. What the model added is a set of per-word reading
@@ -41,7 +41,7 @@ If you find an error, it is a bug. Open an issue.
 
 框架 DeepSeek Harness (Web)，模型 DeepSeek V4.1 Flash。
 
-包括词表、脚本和文档。
+包括词表、脚本、C 生成器和文档。
 
 词表是由脚本从一份 MIT 许可的上游词表推导出来的，原始材料本身可靠。
 模型额外做的是逐词的读音修正，放在 `tools/make-wordlist-cryptogun.py` 的

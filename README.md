@@ -30,6 +30,24 @@ the script prints the resulting figure before the candidates.
 Two verification scripts need extra data. Run `python tools/fetch-data.py` to
 download it.
 
+## Generator
+
+`tools/pick-and-burn.c` is a Windows program that does the whole thing: draws
+candidates, shows them, and drills you on typing one out until you get it right
+five times running. Build it with
+
+    gcc -O2 -Wall -Wextra -std=c11 -finput-charset=UTF-8 -fexec-charset=UTF-8 \
+        -o pick-and-burn.exe tools/pick-and-burn.c -lbcrypt
+
+It wants a real terminal. If stdout is redirected or piped it exits with code 2,
+since that would mean the passphrase lands in someone's log.
+
+Three rounds of red-teaming found that a process running as the same user can
+read both the screen and the program's memory and recover the passphrase either
+way. The reports are in `redteam/`. The generator narrows those windows but
+cannot close them, so it holds up only on a machine where nothing untrusted is
+running.
+
 ## Notes
 
 Every word is two characters, so every code is four letters. Seven of them
@@ -106,6 +124,21 @@ AI-DISCLOSURE.md.
     python tools/make-wordlist-cryptogun.py   # 重新生成词表
 
 有两个核验脚本需要额外数据，用 `python tools/fetch-data.py` 下载。
+
+## 生成器
+
+`tools/pick-and-burn.c` 是个 Windows 程序，把整套流程做完了：抽候选、显示、
+让你照着打，连续打对五次算过。编译：
+
+    gcc -O2 -Wall -Wextra -std=c11 -finput-charset=UTF-8 -fexec-charset=UTF-8 \
+        -o pick-and-burn.exe tools/pick-and-burn.c -lbcrypt
+
+它要求真终端。stdout 被重定向或走管道时直接退出，退出码 2，因为那等于把口令
+写进别人的日志。
+
+三轮红队评估发现，同一个用户下的进程既能读屏幕也能读进程内存，两条路都能拿到
+口令。报告在 `redteam/`。生成器把这两个窗口缩短了，关不掉，所以它只在一台
+没有不可信程序运行的机器上才成立。
 
 ## 说明
 
