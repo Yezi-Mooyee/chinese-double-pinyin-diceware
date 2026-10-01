@@ -1,0 +1,6 @@
+# 全部文本文件使用 LF，避免在 Windows 上 checkout 时被转成 CRLF
+* text=auto eol=lf
+
+*.py   text eol=lf
+*.txt  text eol=lf
+*.md   text eol=lf

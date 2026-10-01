@@ -1,0 +1,12 @@
+# Python
+__pycache__/
+*.py[cod]
+
+# 运行产物（每次执行会重新生成，不入库）
+tools/report-*.txt
+
+# 可选的外部核验数据（由 tools/fetch-data.py 下载，许可各异，不入库）
+tools/phrase-*.txt
+tools/eff_*.txt
+tools/cedict.txt.gz
+raw-cfbao-*.wordlist
